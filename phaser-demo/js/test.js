@@ -27,7 +27,7 @@ var demosPhaser = {
             F.parseTextureAtlasData(game.cache.getJSON("textureDataA"), game.cache.getBaseTexture("textureA"));
 
             var armatureDisplay = F.buildArmatureDisplay("Armature");
-            armatureDisplay.animation.play("walk1");
+            armatureDisplay.animation.play("walk2");
            // armatureDisplay.animation.timeScale = 1;
           //  armatureDisplay.animation.play("walk2");
             //armatureDisplay.create(game.world.width * 0.5,game.world.height * 0.5+100);
