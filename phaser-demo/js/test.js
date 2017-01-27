@@ -3,8 +3,8 @@
 var demosPhaser = {
 
     start: function() {
-        var game = new Phaser.Game(400, 400, Phaser.WEBGL, 'phaser-example', { preload: preload, create: create });
-
+        var game = new Phaser.Game(400, 400, Phaser.WEBGL, 'phaser-example', { preload: preload, create: create, update:update });
+        var armatureDisplay;
         var F;
 
         function preload(){
@@ -22,11 +22,12 @@ var demosPhaser = {
         }
 
         function create() {
+            game.stage.backgroundColor = "#4488AA";
             F =  new dragonBones.PhaserFactory(null,game);
             F.parseDragonBonesData(game.cache.getJSON("dragonBonesData"));
             F.parseTextureAtlasData(game.cache.getJSON("textureDataA"), game.cache.getBaseTexture("textureA"));
 
-            var armatureDisplay = F.buildArmatureDisplay("Armature");
+            armatureDisplay = F.buildArmatureDisplay("Armature");
             armatureDisplay.animation.play("walk2");
            // armatureDisplay.animation.timeScale = 1;
           //  armatureDisplay.animation.play("walk2");
@@ -34,7 +35,12 @@ var demosPhaser = {
 
             //this._stage.addChild(armatureDisplay);
             armatureDisplay.x = game.world.width / 2;
-            armatureDisplay.y = game.world.height  / 2 + 50;
+            //armatureDisplay.y = game.world.height  / 2 + 50;
+            armatureDisplay.scale.set(0.3,0.3);
+        }
+
+        function update() {
+            armatureDisplay.y += 0.1;   
         }
     }
 }
